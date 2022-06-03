@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdocaoController;
+use App\Http\Controllers\PetController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,18 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/pets', function () {
-    echo 'estou na lista de pets';
-});
-
-Route::post('/pets', function () {
-    echo 'estou cadastrando um novo pet';
-});
-
-Route::put('/pets', function () {
-    echo 'estou atualizando um pet';
-});
-
-Route::delete('/pets', function () {
-    echo 'estou deletando um pet';
-});
+Route::get('/pets', [PetController::class, 'index']);
+Route::post('/adocoes', [AdocaoController::class, 'store']);
